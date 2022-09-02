@@ -1,26 +1,34 @@
 import React, { Component } from "react";
 
 class Changer extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
-           count:0
+        this.state = {
+            count: 0
         }
     }
-    clickChange(){
+    clickChange = () => {
         this.setState({
-           count : 1
-        })
+            count: this.state.count + 1
+        }, () => { console.log("num", this.state.count) }
+        )
+    }
+    clickMinus = () => {
+        this.setState({
+            count: this.state.count - 1
+        }, () => { console.log("num", this.state.count) }
+        )
     }
     render() {
-        return( 
+        return (
             <div>
-         <h1> count : {this.state.count}</h1> 
-         <button onClick ={() => this.clickChange()}> change</button>
+                <h1> count : {this.state.count}</h1>
+                <button onClick={this.clickChange}> Add</button>
+                <button onClick={this.clickMinus}> Minus</button>
             </div>
-      
+
         );
     }
-    }
-    
-    export default Changer
+}
+
+export default Changer
